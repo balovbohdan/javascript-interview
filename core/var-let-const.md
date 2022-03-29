@@ -21,3 +21,8 @@ for (var i = 0; i < 4; i++) {
   }, 0);
 }
 ```
+
+## References
+- https://javascript.info/variables
+- https://javascript.info/closure
+- https://javascript.info/var
