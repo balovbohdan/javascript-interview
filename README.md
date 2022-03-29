@@ -1,5 +1,5 @@
 # JavaScript Interview Questions
-Collection of questions/tasks for JavaScript interview.
+Collection of questions/tasks for JavaScript interview. It is in development mode now.
 
 # Contents
 - [Core](/core/README.md)
