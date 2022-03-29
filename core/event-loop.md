@@ -1,6 +1,6 @@
 # Event Loop
 
-## Task 1. What is the console.log's sequence?
+## Task 1. What are the console.log's outputs?
 
 ```js
 console.log('start');
@@ -12,7 +12,7 @@ setTimeout(() => {
 console.log('end');
 ```
 
-## Task 2. What is the console.log's sequence?
+## Task 2. What are the console.log's outputs?
 
 ```js
 console.log('start');
