@@ -35,16 +35,16 @@ console.log('end');
 ## Event Loop Hint
 
 ```
-   ----------                                 -------------------                         ---------------------
- | Call Stack |                             | Browser API         |                     | Render                |
- | (LIFO)     |                             | ------------------- |                     | --------------------- |
- | ---------- |                             | setTimeout  (macro) |                     | requestAnimationFrame |
- | ...        |                             | setInterval (macro) |                     | Style Recalculate     |
- | func 1     |                             | Promise     (micro) |                     | Layout                |
- | func 2     |                             | AJAX        (macro) |                     | Paint                 |
- | func 3     |                             | ...                 |                     | ...                   |
-   ----------                                 -------------------                         ---------------------
-       ↑                                               ↓                                            ↓
+   ----------                                 -------------------               ---------------------
+ | Call Stack |                             | Browser API         |           | Render                |
+ | (LIFO)     |                             | ------------------- |           | --------------------- |
+ | ---------- |                             | setTimeout  (macro) |           | requestAnimationFrame |
+ | ...        |                             | setInterval (macro) |           | Style Recalculate     |
+ | func 1     |                             | Promise     (micro) |           | Layout                |
+ | func 2     |                             | AJAX        (macro) |           | Paint                 |
+ | func 3     |                             | ...                 |           | ...                   |
+   ----------                                 -------------------               ---------------------
+       ↑                                               ↓                                  ↓
    ------------------------------------       -------------------------------------------------------
  | Event Loop                           |   |   -----------------------     -----------------------   |
  | ------------------------------------ | ← | | Microtasks Queue (FIFO) | | Macrotasks Queue (FIFO) | |
