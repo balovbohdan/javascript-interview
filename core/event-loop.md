@@ -35,15 +35,15 @@ console.log('end');
 ## Event Loop Hint
 
 ```
-   ----------                                 -------------------               ---------------------
- | Call Stack |                             | Browser API         |           | Render                |
- | (LIFO)     |                             | ------------------- |           | --------------------- |
- | ---------- |                             | setTimeout  (macro) |           | requestAnimationFrame |
- | ...        |                             | setInterval (macro) |           | Style Recalculate     |
- | func 1     |                             | Promise     (micro) |           | Layout                |
- | func 2     |                             | AJAX        (macro) |           | Paint                 |
- | func 3     |                             | ...                 |           | ...                   |
-   ----------                                 -------------------               ---------------------
+   -----------------                          -------------------               ---------------------
+ | Call Stack (LIFO) |                      | Browser API         |           | Render                |
+ | ----------------- |                      | ------------------- |           | --------------------- |
+ | ...               |                      | setTimeout  (macro) |           | requestAnimationFrame |
+ | func 4            |                      | setInterval (macro) |           | Style Recalculate     |
+ | func 3            |                      | Promise     (micro) |           | Layout                |
+ | func 2            |                      | AJAX        (macro) |           | Paint                 |
+ | func 1            |                      | ...                 |           | ...                   |
+   -----------------                          -------------------               ---------------------
        ↑                                               ↓                                  ↓
    ------------------------------------       -------------------------------------------------------
  | Event Loop                           |   |   -----------------------     -----------------------   |
