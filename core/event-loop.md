@@ -18,7 +18,7 @@ console.log('end');
 console.log('start');
 
 setTimeout(() => {
-  console.log('setTimeout');
+  console.log('setTimeout 1');
 }, 0);
 
 Promise.resolve()
@@ -28,42 +28,65 @@ Promise.resolve()
   .then(() => {
     console.log('promise2');
   });
+  
+setTimeout(() => {
+  console.log('setTimeout 2');
+}, 0);
 
 console.log('end');
+```
+
+## Task 3. What code fragment will stuck?
+
+```js
+const macrotask = () => {
+  setTimeout(macrotask, 0);
+};
+```
+
+```js
+const microtask = () => {
+  Promise.resolve().then(macrotask);
+};
 ```
 
 ## Event Loop Hint
 
 ```
-   -----------------                          -------------------               ---------------------
- | Call Stack (LIFO) |                      | Browser API         |           | Render                |
- | ----------------- |                      | ------------------- |           | --------------------- |
- | ...               |                      | setTimeout  (macro) |           | requestAnimationFrame |
- | func 4            |                      | setInterval (macro) |           | Style Recalculate     |
- | func 3            |                      | Promise     (micro) |           | Layout                |
- | func 2            |                      | AJAX        (macro) |           | Paint                 |
- | func 1            |                      | ...                 |           | ...                   |
-   -----------------                          -------------------               ---------------------
-       ↑                                               ↓                                  ↓
-   ------------------------------------       -------------------------------------------------------
- | Event Loop                           |   |   -----------------------     -----------------------   |
- | ------------------------------------ | ← | | Microtasks Queue (FIFO) | | Macrotasks Queue (FIFO) | |
- |    ----------       ----------       |   |   -----------------------     -----------------------   |
- |  | Tasks      | → | Microtasks |     |     -------------------------------------------------------
+   -----------------                          -------------------                       ---------------------
+ | Call Stack (LIFO) |                      | Browser API         |                   | Render                |
+ | ----------------- |                      | ------------------- |                   | --------------------- |
+ | ...               |                      | setTimeout  (macro) |                   | requestAnimationFrame |
+ | func 4            |                      | setInterval (macro) |                   | Style Recalculate     |
+ | func 3            |                      | Promise     (micro) |                   | Layout                |
+ | func 2            |                      | AJAX        (macro) |                   | Paint                 |
+ | func 1            |                      | ...                 |                   | ...                   |
+   -----------------                          -------------------                       ---------------------
+       ↑                                               ↓                                          ↓
+   ------------------------------------       ---------------------------------------------------------------
+ | Event Loop                           |   |   ---------------------------     ---------------------------   |
+ | ------------------------------------ | ← | | Microtasks Queue (FIFO) [1] | | Macrotasks Queue (FIFO) [2] | |
+ |    ----------       ----------       |   |   ---------------------------     ---------------------------   |
+ |  | Tasks      | → | Microtasks |     |     ---------------------------------------------------------------
  |    ----------       ----------       |
- |              ↑      ↓                |     -----------------------
- |             ----------               |   |   -------------------   |
- |           | Macrotasks |             | ← | | Render Queue (FIFO) | |
- |             ----------               |   |   -------------------   |
-   ------------------------------------       -----------------------
-                                                         ↑
-                                               ---------------------
-                                             | Render                |
-                                             | --------------------- |
-                                             | requestAnimationFrame |
-                                             | Style Recalculate     |
-                                             | Layout                |
-                                             | Paint                 |
-                                             | ...                   |
-                                               ---------------------
+ |              ↑      ↓                |     ---------------------------
+ |             ----------               |   |   -----------------------   |
+ |           | Macrotasks |             | ← | | Render Queue (FIFO) [3] | |
+ |             ----------               |   |   -----------------------   |
+   ------------------------------------       ---------------------------
+                                                           ↑
+                                                 ---------------------
+                                               | Render                |
+                                               | --------------------- |
+                                               | requestAnimationFrame |
+                                               | Style Recalculate     |
+                                               | Layout                |
+                                               | Paint                 |
+                                               | ...                   |
+                                                 ---------------------
 ```
+
+## References
+- https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
+- https://www.youtube.com/watch?v=8aGhZQkoFbQ
+- https://javascript.info/event-loop
