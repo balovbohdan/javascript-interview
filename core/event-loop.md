@@ -46,7 +46,7 @@ const macrotask = () => {
 
 ```js
 const microtask = () => {
-  Promise.resolve().then(macrotask);
+  Promise.resolve().then(microtask);
 };
 ```
 
