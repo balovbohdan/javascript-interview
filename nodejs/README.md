@@ -1,3 +1,3 @@
 # NodeJS
 
-- [Basic Architecture](/architecture-basic.md)
+- [Basic Architecture](architecture-basic.md)
