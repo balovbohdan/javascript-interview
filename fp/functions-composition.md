@@ -1,3 +1,5 @@
+[Functional Programming](.)
+
 # Functions Composition
 
 ## Task 1. Develop a `compose` function
