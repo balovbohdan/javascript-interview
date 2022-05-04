@@ -1,3 +1,5 @@
+[Core](/core)
+
 # Event Loop
 
 ## Task 1. What are the console.log's outputs?
@@ -87,6 +89,7 @@ const microtask = () => {
 ```
 
 ## References
+
 - https://jakearchibald.com/2015/tasks-microtasks-queues-and-schedules/
 - https://www.youtube.com/watch?v=8aGhZQkoFbQ
 - https://javascript.info/event-loop
