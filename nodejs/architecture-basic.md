@@ -4,7 +4,7 @@
 
 ## Task 1. Design a basic service architecture
 
-Imagine that you need to create a simple service that operates with ["Welsh Corgi"](https://en.wikipedia.org/wiki/Welsh_Corgi) entities.
+Imagine that you need to create a simple service that operates with ["Welsh Corgi Pembroke"](https://en.wikipedia.org/wiki/Welsh_Corgi) entities.
 Expected operations:
 
 - Get single corgi
