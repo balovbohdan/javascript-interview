@@ -15,7 +15,7 @@ Expected operations:
 
 You are expected to:
 
-1. Design service routes for the specified operations
+1. Design service routes (endpoints) for the specified operations and verbs (methods)
 2. Design folders structure
 3. Suggest core techs
 
